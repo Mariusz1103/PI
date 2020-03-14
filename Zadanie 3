@@ -1,0 +1,59 @@
+//
+// Created by Mariusz on 14.03.2020.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+//x-x^3/3!+x^5/5!
+int losuj1() //losuje liczbe z przedziału od 0 do 1000
+{
+    int x;
+    x=rand()%(1001);
+    return x;
+}
+int losuj2()//losuje liczbe od 0 do 1000*PI
+{
+    int x;
+    float pi=22/7.0*1000;
+    int pi1=pi+1;
+    x=rand()%(pi1);
+    return x;
+}
+int silnia(int liczba) // liczy wartość silni
+{
+    int liczba1=liczba;
+    int wynik=1;
+    while(liczba1>0)
+    {
+        wynik=wynik*liczba1;
+        liczba1--;
+    }
+    return wynik;
+}
+int main()
+{
+    int liczba_pod=0;
+    int liczba_wszytkich=0;
+    float x=0;
+    float y=0;
+    srand(time(NULL));
+    float pi=22/7.0; //wartosc pi
+    for(int i=0; i<1000;i++)//1000 prób
+    {
+        x=losuj2()/1000;//zmienisza zakres liczb( od 0 do PI)
+        y=losuj1()/1000;// zmiejsza zakres liczb( od 0 do 1)
+        float sin=(x-(pow(x,3)/silnia(3)));//liczy wartosc sinusa z szeregu Maclarena
+        if(sin > y)
+        {
+            liczba_pod++;//sprawdza czy punkt jest pod wykrsem
+        }
+        liczba_wszytkich++;
+    }
+    float licz=liczba_pod;
+    float liczba=licz/liczba_wszytkich; //liczba dobrych prób
+    float wynik= liczba*pi;//pole sinus // procent dobrych prob razy pole prostokatu 1 X PI
+    printf("%f",wynik); //wynik powinnen być +-2
+    return 0;
+}
