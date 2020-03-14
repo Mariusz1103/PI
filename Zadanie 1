@@ -1,0 +1,43 @@
+//
+// Created by Mariusz on 14.03.2020.
+//
+
+#include <stdio.h>
+
+void bubble_sort(int tab[], int N) //przekazuje tablice i liczbę elementów w niej
+{
+    while(1!=0) { //chce aby wykonywała się w "nieskończoność
+        int val = 0;
+        for (int i = 0; i < N-1; i++) { //przeście po każdym elemencie i zamiana jak to konieczne
+            if (tab[i] > tab[i + 1]) { //jeśli i+1>i zamieniam je
+                int tmp = 0;
+                tmp = tab[i];
+                tab[i] = tab[i + 1];
+                tab[i + 1] = tmp;
+                val += 1; //stanowi warunek aby zakończyć funkcje
+
+            }
+        }
+        if (val == 0) //tablica posortowana rosnąco
+            break;
+    }
+}
+
+int main()
+{
+    int t[]={5,8,32,485,24,125,24};
+    int N=sizeof(t) / sizeof(int); //ilość elementów w tablicy
+    for(int i=0; i<N ; i++)//wypisuje tablice przed sortowaniem
+    {
+        int k=t[i];
+        printf("%d ",k);
+    }
+    printf("\n");
+    bubble_sort(t, N);//sortowanie
+    for(int i=0; i<N ; i++)//wypisuje posortowaną tablice
+    {
+        int k=t[i];
+        printf("%d ",k);
+    }
+    return 0;
+}
