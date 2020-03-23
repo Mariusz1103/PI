@@ -1,0 +1,47 @@
+//
+// Created by Mariusz on 14.03.2020.
+//
+
+//x^5+7*x^4 //funkjca do testowania
+
+#include <stdio.h>
+#include <math.h>
+
+float liczenie_S(float a, float b, float blad) //liczenie przybliżonej wartości
+{
+    float S;
+    float h=b-a;
+    float c=(a+b)/2.0;
+    float f_a=pow(a,5)+7*pow(a,4);
+    float f_b=pow(b,5)+7*pow(b,4);
+    float f_c=pow(c,5)+7*pow(c,4);
+    S=(h*f_a+4*f_c+f_b)/6.0;
+    return S;
+}
+
+float calka(float a, float b, float blad) //wywołania rekurencyjne
+{
+    float c=(a+b)/2.0;
+    if(abs(liczenie_S(a,b,blad)-(liczenie_S(a,c,blad/2.0)-liczenie_S(c,b,blad/2.0)))<=blad) {
+        return liczenie_S(a,b,blad);
+    }
+    else
+        return (liczenie_S(a,c,blad/2.0) + liczenie_S(c,b,blad/2.0));
+}
+int main()
+{
+    float a;
+    float b;
+    float blad;
+    printf("Podaj dolna granice calkowania:");
+    scanf("%f",&a);
+    printf("Podaj gorna granice calkowania:");
+    scanf("%f",&b);
+    if(a>b) return 0;
+    printf("Podaj dozwolony blad:");
+    scanf("%f",&blad);
+    printf("%f",calka(a,b,blad));
+
+    return 0;
+}
+
