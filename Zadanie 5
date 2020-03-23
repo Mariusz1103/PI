@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+const int MAX=100;
+
+char poprawne(char tab[MAX],int i)
+{
+    char x='a';
+    if(i>=100) return 'c';
+    if(tab[i]==')'||tab[i]==']'||tab[i]=='}')
+    {
+        if(tab[i]==')') return '(';
+        else if(tab[i]==']') return '[';
+        else return '{';
+    }
+    x=poprawne(tab,i+1);
+    if(x=='e') return 'e';
+    if(x=='c') return 'c';
+
+    if(x=='(') {
+        for (int j = i; j >= 0; j--) {
+            if (tab[j] == x) {
+                tab[j] = 0;
+                tab[i+1] = 0;
+                break;
+            }
+            else if (tab[j] == '[' || tab[j] == '{')
+                return 'e';
+        }
+    }
+    else if(x=='{') {
+        for (int j = i; j >= 0; j--) {
+            if (tab[j] == x) {
+                tab[j] = 0;
+                tab[i+1] = 0;
+                break;
+            }
+            else if (tab[j] == '[' || tab[j] == '(')
+                return 'e';
+        }
+    }
+    else if(x=='[') {
+        for (int j = i; j >= 0; j--) {
+            if (tab[j] == x) {
+                tab[j] = 0;
+                tab[i+1] = 0;
+                break;
+            }
+            else if (tab[j] == '(' || tab[j] == '{')
+                return 'e';
+        }
+    }
+    if(i<100)x=poprawne(tab,i+1);
+    if(x=='c') return'c';
+}
+
+int main() {
+    char tab[100];
+    for(int i=0;i<100;i++)
+        tab[i]=0;
+    scanf("%s",&tab);
+    int licznik1=0;
+    int licznik2=0;
+    int licznik3=0;
+    for(int i=0;i<100;i++)
+    {
+        if(tab[i]=='(') licznik1++;
+        if(tab[i]==')') licznik1--;
+        if(tab[i]=='{') licznik2++;
+        if(tab[i]=='}') licznik2--;
+        if(tab[i]=='[') licznik3++;
+        if(tab[i]==']') licznik3--;
+    }
+    if(licznik1==0&&licznik2==0&&licznik3==0) {
+        if (poprawne(tab, 0) == 'c')
+            printf("Poprawna kolejnosc.");
+        else printf("Zla kolejnosc!");
+    }
+    else printf("Zla kolejnosc!");
+
+    return 0;
+}
