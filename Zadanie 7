@@ -1,0 +1,42 @@
+//
+// Created by Mariusz on 27.03.2020.
+//
+
+#include <stdio.h>
+#include <limits.h>
+
+float wart(int tab[], int size, int t[2])
+{
+    //wartości MIN i MAX jakie mogą być zapisane w int
+    int min=INT_MAX;
+    int max=INT_MIN;
+    for(int i=0;i<size;i++)
+    {
+        if(tab[i] < min)
+        {
+            min=tab[i];
+        }
+        if(tab[i] > max)
+        {
+            max=tab[i];
+        }
+    }
+    //zapisuje do tablicy, nie miałem innego pomysłu jak przekazać
+    t[0]=min;
+    t[1]=max;
+    return 0;
+}
+
+int main()
+{
+    int min;
+    int max;
+    int t[2];
+    int tab[]={345,345346,624,2452,3123,3243,4354,5};
+    //można łatwo zmienić funkcje, aby wczytywała elementy
+    wart(tab, sizeof(tab)/ sizeof(tab[0]),t);
+    min=t[0];
+    max=t[1];
+    printf("%d\n%d\n",min, max);
+    return 0;
+}
