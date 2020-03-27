@@ -1,0 +1,66 @@
+//
+// Created by Mariusz on 27.03.2020.
+//
+#include <stdio.h>
+
+int wypisz(int tab[],int wiersze, int kolumny)//funkcja do wypisania macierzy na końcu
+{
+    printf("Macierz wyglada tak:\n");
+    for(int i=0;i<wiersze;i++)
+    {
+        for(int j=0;j<kolumny;j++) {
+            printf("%d\t",tab[i*wiersze+j]);
+        }
+        printf("\n");
+    }
+}
+//funkcja do dodawania macierzy, przekazuje macierze które chce dodac(tablice)
+//i przekazuje pustą tablice, gdzie zapisuje wynik tego oraz licze kolumn i wierszy
+int suma_macierzy(int tab1[],  int tab2[], int tab12[], int wiersze, int kolumny)
+{
+    for(int i=0;i<wiersze;i++)
+    {
+        for(int j=0;j<kolumny;j++) {
+            tab12[i*wiersze+j]=tab1[i*wiersze+j]+tab2[i*wiersze+j];
+        }
+    }
+}
+int main()
+{
+    const int liczba_wierszy=3;
+    //liczba wierszy ( można wczytywać, ale dla testowania ta wersja lepsza
+    const int liczba_kolumn=4;
+    // printf("Podaj liczbe kolumn:");
+    //scanf("%d",&liczba_kolumn);
+    //funkce do wczytywania tych wartośći
+    //printf("Podaj liczbe wierszy:");
+    //scanf("%d",&liczba_wierszy);
+    int wart=0; //sluży do wypelniania macierzy
+    int A[liczba_wierszy][liczba_kolumn];
+    int B[liczba_wierszy][liczba_kolumn];
+    int abSuma[liczba_wierszy][liczba_kolumn];
+    //wypełienie macierzy
+    for(int i=0;i<liczba_wierszy;i++)
+    {
+        for(int j=0;j<liczba_kolumn;j++) {
+            B[i][j]=wart;
+            //można wartości wczytytywać, ale to jest uciążliwe to sprawczania programu( czasochłonne_
+            //printf("Wartosc na pozycji %d %d:\n macierzy B",i+1,j+1);
+            //scanf("%d\t",B[i][j]);
+            wart++;
+            A[i][j]=wart;
+            //printf("Wartosc na pozycji %d %d:\n macierzy A",i+1,j+1);
+            //scanf("%d\t",A[i][j]);
+            wart=wart*2;
+        }
+    }
+    //wywołanie fukncji
+    suma_macierzy(A,B, abSuma, liczba_wierszy, liczba_kolumn);
+    //wypisanie macierzy A i B
+    wypisz(B, liczba_wierszy, liczba_kolumn);
+    wypisz(A, liczba_wierszy, liczba_kolumn);
+    //wypisywanie sumy
+    wypisz(abSuma, liczba_wierszy, liczba_kolumn);
+
+
+    return 0;
