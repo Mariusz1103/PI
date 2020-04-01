@@ -3,16 +3,13 @@
 //
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
- 
-float suma=0;
- 
+
 float f(float f)
 {
     return f*f*f*f*f*3;   //dowolna funkcja z ktorej chce policzyc calke
 }
- 
+
 float simpson_policz(float a,float b)
 {
     float c=(b+a)/2.0;
@@ -21,28 +18,29 @@ float simpson_policz(float a,float b)
     S=h*(f(a)+4*f(c)+f(b))/6.0;
     return S;
 }
- 
-float simpson(float a,float b,float delta)
+
+float simpson(float a,float b,float delta,int licznik)//licznik myśle, że 50 bedzie dobry
 {
+    if(licznik=0) return 0;//jeśli wykona się za dużo razy to koniec
     float c=(b+a)/2.0;
     double d=fabs(simpson_policz(a,b)-(simpson_policz(a,c)+simpson_policz(c,b)));
     if(d<delta)
         return simpson_policz(a,b);
-    suma=simpson(a,c,delta/2.0)+simpson(c,b,delta/2.0);
+    int suma=simpson(a,c,delta/2.0,licznik-1 )+simpson(c,b,delta/2.0,licznik-1);
     return suma;
 }
- 
+
 int main() {
     float a;
     float b;
     float delta;
-    printf("Podaj poczatek przedzialu calkowania:\n");
-    scanf("%f",&a);
-    printf("Podaj koniec przedzialu calkowania:\n");
-    scanf("%f",&b);
-    printf("Podaj maksymalny dopuszczalny blad:\n");
-    scanf("%f",&delta);
-    printf("%f",simpson(a,b,delta));
- 
- 
+    int licznik=50;
+    printf("Podaj poczatek przedzialu calkowania:");
+    scanf("%f", &a);
+    printf("Podaj koniec przedzialu calkowania:");
+    scanf("%f", &b);
+    printf("Podaj maksymalny dopuszczalny blad:");
+    scanf("%f", &delta);
+    printf("%f", simpson(a, b, delta, licznik));
     return 0;
+}
