@@ -3,7 +3,6 @@
 //
 
 #include <stdio.h>
-#include <limits.h>
 
 float wart(int tab[], int size, int* min, int* max)
 {
