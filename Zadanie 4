@@ -7,8 +7,10 @@
 
 float f(float f)
 {
-    return f*f*f*f*f*3+f*f*f*f*8+f*8;  
-float simpson_policz(float a,float b)
+    return f*f*f*f*f*3+f*f*f*f*8+f*8;   //dowolna funkcja z ktorej chce policzyc calke
+}
+
+float policz(float a, float b)
 {
     float c=(b+a)/2.0;
     float S;
@@ -21,9 +23,9 @@ float simpson(float a,float b,float delta,int licznik)//licznik myśle, że 50 b
 {
     if(licznik=0) return 0;//jeśli wykona się za dużo razy to koniec
     float c=(b+a)/2.0;
-    double d=fabs(simpson_policz(a,b)-(simpson_policz(a,c)+simpson_policz(c,b)));
+    double d=fabs(policz(a, b) - (policz(a, c) + policz(c, b)));
     if(d<delta)
-        return simpson_policz(a,b);
+        return policz(a, b);
     int suma=simpson(a,c,delta/2.0,licznik-1 )+simpson(c,b,delta/2.0,licznik-1);
     return suma;
 }
