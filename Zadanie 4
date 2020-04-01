@@ -7,9 +7,7 @@
 
 float f(float f)
 {
-    return f*f*f*f*f*3;   //dowolna funkcja z ktorej chce policzyc calke
-}
-
+    return f*f*f*f*f*3+f*f*f*f*8+f*8;  
 float simpson_policz(float a,float b)
 {
     float c=(b+a)/2.0;
