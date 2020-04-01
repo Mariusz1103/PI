@@ -16,7 +16,7 @@ float wart(int tab[], int size, int* min, int* max)
         {
             min_1=tab[i];
         }
-        if(tab[i] > max_1)
+        else if(tab[i] > max_1)
         {
             max_1=tab[i];
         }
