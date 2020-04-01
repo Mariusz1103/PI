@@ -25,19 +25,19 @@ int wypisz(const int tab1[], const int tab2[], int tab12[], int size)
 int main()
 {
     int tab_1[]={1,4,7,9,125};
-    //(int i=0;i< sizeof(tab_1)/4;i++)
+    //(int i=0;i< sizeof(tab_1)/sizeof(int);i++)
     //{
     //    scanf("%d",&tab_1[i]);
     //}
     int tab_2[]={1,4,7,9,125};
     int tab_3[]={432,423,434,342,433,232,423,123};
     int tab_4[]={22,323,2,13,3,4,121,413};
-    int tab_12[sizeof(tab_1)/4];
-    int tab_34[sizeof(tab_3)/4];
-    wektor(tab_1,tab_2,tab_12, sizeof(tab_1)/4) ;
-    wypisz(tab_1,tab_2,tab_12, sizeof(tab_1)/4);
-    wektor(tab_3,tab_4,tab_34, sizeof(tab_2)/4) ;
-    wypisz(tab_3,tab_4,tab_34, sizeof(tab_2)/4);
+    int tab_12[sizeof(tab_1)/ sizeof(int)];
+    int tab_34[sizeof(tab_3)/sizeof(int)];
+    wektor(tab_1,tab_2,tab_12, sizeof(tab_1)/sizeof(int)) ;
+    wypisz(tab_1,tab_2,tab_12, sizeof(tab_1)/sizeof(int));
+    wektor(tab_3,tab_4,tab_34, sizeof(tab_3)/sizeof(int)) ;
+    wypisz(tab_3,tab_4,tab_34, sizeof(tab_3)/sizeof(int));
 
 
 
