@@ -13,6 +13,7 @@ int wypisz(int tab[],int wiersze, int kolumny)//funkcja do wypisania macierzy na
         }
         printf("\n");
     }
+    return 0;
 }
 //funkcja do dodawania macierzy, przekazuje macierze które chce dodac(tablice)
 //i przekazuje pustą tablice, gdzie zapisuje wynik tego oraz licze kolumn i wierszy
@@ -24,12 +25,13 @@ int suma_macierzy(int tab1[],  int tab2[], int tab12[], int wiersze, int kolumny
             tab12[i*wiersze+j]=tab1[i*wiersze+j]+tab2[i*wiersze+j];
         }
     }
+    return 0;
 }
 int main()
 {
-    const int liczba_wierszy=3;
+    int liczba_wierszy=3;
     //liczba wierszy ( można wczytywać, ale dla testowania ta wersja lepsza
-    const int liczba_kolumn=4;
+    int liczba_kolumn=4;
     // printf("Podaj liczbe kolumn:");
     //scanf("%d",&liczba_kolumn);
     //funkce do wczytywania tych wartośći
@@ -64,3 +66,4 @@ int main()
 
 
     return 0;
+}
