@@ -28,10 +28,10 @@ int main (void)
     //tablica wskaznikow
     char *napisy2[] = {tablica[0], tablica[1] , tablica[2],tablica[3], tablica[4], tablica[5], tablica[6], tablica[7], tablica[8], tablica[9], tablica[10], tablica[11], tablica[12]};
     int liczba;
-    liczba=litery((char *) *napisy2);
+    liczba=litery(*napisy2);
     printf("%d\n",liczba);
     int liczba1;
-    liczba1=litery((char *) tablica);
+    liczba1=litery(tablica);
     printf("%d",liczba1);
 
     return 0;
